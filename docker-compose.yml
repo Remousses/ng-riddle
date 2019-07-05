@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  ng_riddle:
+    container_name: ng_riddle
+    hostname: ng_riddle
+    build:
+      context: ./services/ng-riddle
+      dockerfile: Dockerfile
+    volumes:
+      - ./services/ng-riddle/app:/app
+    working_dir: /app
+    ports:
+      - 80:80
+
+  riddle_api:
+    container_name: riddle_api
+    hostname: riddle_api
+    build:
+      context: ./services/riddle-api
+      dockerfile: Dockerfile
+    volumes:
+      - ./services/riddle-api/app:/app
+    working_dir: /app
+    ports:
+      - 3306:3306
